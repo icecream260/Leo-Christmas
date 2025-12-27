@@ -21,6 +21,12 @@ h1 {
   margin: 20px 10px;
 }
 
+h5 {
+  font-family: 'Englebert';
+  margin-top: -15px;
+  margin-bottom: 5px
+}
+
 .chances {
   font-family: 'Englebert';
   font-size: 1.2rem;
