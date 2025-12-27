@@ -7,7 +7,6 @@ html, body {
   background-image: url('photos/background2.jpeg');
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
 }
 
 @font-face {
@@ -21,10 +20,26 @@ h1 {
   margin: 20px 10px;
 }
 
+.subtitle-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: -15px;
+  margin-bottom: 6px;
+}
+
 h5 {
   font-family: 'Englebert';
-  margin-top: -15px;
-  margin-bottom: 5px
+  margin: 0;
+}
+
+.volume-btn {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-left: -10px;
 }
 
 .chances {
@@ -35,19 +50,6 @@ h5 {
 .red-text {
   color: red;
   font-weight: bold;
-}
-
-.top-bar {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-}
-
-.volume-btn {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
 }
 
 .play-again {
@@ -73,6 +75,7 @@ h5 {
   cursor: pointer;
   transition: transform 0.3s;
 }
+
 .card:hover {
   transform: scale(1.05);
 }
@@ -103,18 +106,14 @@ h5 {
 
 .card-back {
   transform: rotateY(180deg);
-}
-
-/* SPECIAL LEO IMAGE */
-.card-back.leo-img {
   object-fit: contain;
-  transform: rotateY(180deg) scale(1.00);
 }
 
-/* RESPONSIVE */
+/* Responsive */
 @media (max-width: 1024px) {
   .photo-grid { grid-template-columns: repeat(3, 1fr); }
 }
+
 @media (max-width: 768px) {
   .photo-grid { grid-template-columns: repeat(2, 1fr); }
 }
