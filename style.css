@@ -1,0 +1,114 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  height: 100%;
+  overflow-x: hidden;
+  background-image: url('photos/background2.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@font-face {
+  font-family: 'Englebert';
+  src: url('Englebert-Regular.ttf');
+}
+
+h1 {
+  font-family: 'Englebert';
+  font-size: 1.8rem;
+  margin: 20px 10px;
+}
+
+.chances {
+  font-family: 'Englebert';
+  font-size: 1.2rem;
+}
+
+.red-text {
+  color: red;
+  font-weight: bold;
+}
+
+.top-bar {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.volume-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.play-again {
+  margin: 10px auto;
+  padding: 6px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+
+.play-again.start { background: #e74c3c; }
+.play-again.play-again-state { background: #27ae60; }
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+  padding: 6px;
+}
+
+.card {
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-inner {
+  position: relative;
+  width: 90%;
+  padding-top: 90%;
+  margin: auto;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  backface-visibility: hidden;
+  border-radius: 12px;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
+
+/* SPECIAL LEO IMAGE */
+.card-back.leo-img {
+  object-fit: contain;
+  transform: rotateY(180deg) scale(1.00);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .photo-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 768px) {
+  .photo-grid { grid-template-columns: repeat(2, 1fr); }
+}
