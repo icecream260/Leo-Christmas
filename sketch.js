@@ -132,7 +132,7 @@ function setupClicks() {
       const back = card.querySelector(".card-back");
 
       if (back.dataset.leo) {
-        chancesDisplay.textContent = "🎄 You found the Christmas Leo Boy! 🎄";
+        chancesDisplay.textContent = "🎄 YAY! You Caught Him! 🎄";
         gameOver = true;
       } else {
         chances--;
@@ -141,7 +141,7 @@ function setupClicks() {
             `Chances Left: <span class="red-text"> ${chances}</span>`;
         } else {
           chancesDisplay.innerHTML =
-            '<span class="red-text">Out of Chances!</span> Leo has been revealed 🎄';
+            '<span class="red-text">Darn!</span> Leo Caught You First! 🎄';
           cards[leoIndex].classList.add("flipped");
           gameOver = true;
         }
