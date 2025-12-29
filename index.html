@@ -3,97 +3,47 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Merry Christmas!</title>
+  <title>🎄 Find the Christmas Tree!</title>
+
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
+
+  <!-- p5.js for snow -->
   <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.min.js"></script>
 </head>
 
 <body>
-  <h1>🎄 Find the Christmas Tree! 🎄</h1>
 
-  <div class="subtitle-row">
-    <h5>( Click on the photos to play! )</h5>
-    <button class="volume-btn">🔊</button>
-  </div>
+  <div class="ui">
+    <h1>🎄 Find the Christmas Tree! 🎄</h1>
 
-  <div class="chances">Chances: <span class="red-text">3</span></div>
-  <button class="play-again start">Start</button>
+    <div class="subtitle-row">
+      <h5>A tree was accidentally let loose! Catch him before he catches you by clicking on the photos! </h5>
+      
+    </div>
 
-  <div class="photo-grid">
-    <div class="card">
-      <div class="card-inner">
-        <img class="card-front" src="photos/img1.jpg" alt="leo1">
-        <img class="card-back" src="photos/blank.png" alt="cardback">
-      </div>
+    <div class="chances">
+      Chances: <span class="red-text">3</span>
     </div>
-    <div class="card">
-      <div class="card-inner">
-        <img class="card-front" src="photos/img2.JPEG" alt="leo2">
-        <img class="card-back" src="photos/blank.png" alt="cardback">
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-inner">
-        <img class="card-front" src="photos/img3.JPEG" alt="leo3">
-        <img class="card-back" src="photos/blank.png" alt="cardback">
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-inner">
-        <img class="card-front" src="photos/img4.JPEG" alt="leo4">
-        <img class="card-back" src="photos/blank.png" alt="cardback">
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-inner">
-        <img class="card-front" src="photos/img5.PNG" alt="leo5">
-        <img class="card-back" src="photos/blank.png" alt="cardback">
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-inner">
-        <img class="card-front" src="photos/img6.jpg" alt="leo6">
-        <img class="card-back" src="photos/blank.png" alt="cardback">
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-inner">
-        <img class="card-front" src="photos/img7.JPEG" alt="leo7">
-        <img class="card-back" src="photos/blank.png" alt="cardback">
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-inner">
-        <img class="card-front" src="photos/img8.JPEG" alt="leo8">
-        <img class="card-back" src="photos/blank.png" alt="cardback">
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-inner">
-        <img class="card-front" src="photos/img9.JPEG" alt="leo9">
-        <img class="card-back" src="photos/blank.png" alt="cardback">
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-inner">
-        <img class="card-front" src="photos/img14.jpg" alt="leo14">
-        <img class="card-back" src="photos/blank.png" alt="cardback">
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-inner">
-        <img class="card-front" src="photos/img11.JPEG" alt="leo11">
-        <img class="card-back" src="photos/blank.png" alt="cardback">
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-inner">
-        <img class="card-front" src="photos/img12.JPEG" alt="leo12">
-        <img class="card-back" src="photos/blank.png" alt="cardback">
-      </div>
+
+    <!-- START + DIFFICULTY -->
+    <div class="start-row">
+      <button class="play-again start">Start</button>
+      <select id="difficulty">
+        <option value="" selected disabled hidden>Modes</option> 
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+      </select>
+      <button class="volume-btn">🔊</button>
     </div>
   </div>
 
+  <!-- PHOTO GRID -->
+  <div class="photo-grid"></div>
+
+  <!-- JS -->
   <script src="sketch.js"></script>
 </body>
+
 </html>
