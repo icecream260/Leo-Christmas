@@ -266,11 +266,24 @@ body.home #difficulty {
    Mobile Responsiveness
 ===================================== */
 @media (max-width: 1100px) {
-  body { height: auto; min-height: 100vh; overflow-y: auto; }
-  .photo-grid.easy   { grid-template-columns: repeat(2, 1fr); }
-  .photo-grid.medium { grid-template-columns: repeat(4, 1fr); }
-  .photo-grid.hard   { grid-template-columns: repeat(6, 1fr); }
-  .photo-grid { width: 95vw; gap: 8px; padding-bottom: 50px; }
+  body {
+    height: auto;
+    min-height: 100vh;
+    overflow-y: auto;
+  }
+
+  /* ALL difficulties behave the same on mobile */
+  .photo-grid.easy,
+  .photo-grid.medium,
+  .photo-grid.hard {
+    grid-template-columns: repeat(auto-fill, 170px);
+  }
+
+  .photo-grid {
+    width: 95vw;
+    gap: 10px;
+    padding-bottom: 50px;
+  }
 }
 
 @media (max-width: 480px) {
