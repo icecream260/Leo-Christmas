@@ -8,19 +8,21 @@ html {
 body { 
   margin: 0;
   padding: 0;
-  height: 100vh; 
   width: 100%;
-  overflow: hidden; 
+  min-height: 100vh;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
+  text-align: center;
+
   background-image: url('photos/background2.jpeg');
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
-  box-sizing: border-box;
-  text-align: center;
+  background-repeat: no-repeat;
+
   font-family: 'Englebert', sans-serif;
+  box-sizing: border-box;
 }
 
 @font-face {
@@ -32,7 +34,6 @@ body {
    UI Elements
 ===================================== */
 h1 {
-  font-family: 'Englebert';
   font-size: 1.8rem;
   margin: 20px 0;
   width: 100%;
@@ -42,135 +43,88 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 4px;
-  margin-top: -15px;
-  margin-bottom: 6px;
+  gap: 8px;
+  flex-wrap: wrap;
   width: 100%;
-  flex-wrap: wrap; 
+  margin-bottom: 10px;
 }
 
 h5 {
-  font-family: 'Englebert';
   margin: 0;
   font-weight: lighter;
-  font-size: 0.9rem;
-  white-space: normal; /* Allows wrapping on mobile so it doesn't disappear */
+  font-size: 1rem;
 }
-
 
 .volume-btn {
   background: none;
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
-  display: flex;
-  align-items: center;
 }
 
 .chances {
-  font-family: 'Englebert';
+  background: white;
+  padding: 6px 14px;
+  border-radius: 8px;
   font-size: 1rem;
-  /* Compact White Box Styles */
-  background-color: white;
-  padding: 4px 12px;     /* Tighter padding */
-  border-radius: 7px;    /* Slightly sharper corners for a smaller look */
-  display: inline-flex;  /* Using flex to keep contents centered */
+  margin: 10px 0;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin: 5px 0;
-  color: #333;
-  height: 20px;          /* Fixed height to match your small buttons */
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
 .red-text {
   color: red;
   font-weight: bold;
-  margin-right: 4px;
-  margin-left: 2px;
+  margin-left: 4px;
 }
 
 /* =====================================
-   BOX SIZING LOGIC (Matching buttons)
+   Buttons & Dropdown
 ===================================== */
-.play-again, #difficulty {
+.start-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  margin: 15px 0 25px;
+}
+
+.play-again,
+#difficulty {
   font-family: 'Englebert';
-  font-size: 0.9rem;     /* SHRUNK from 1rem */
-  padding: 0 15px;       /* SHRUNK from 20px */
-  border-radius: 6px;
+  font-size: 1rem;
+  padding: 10px 22px;
+  border-radius: 8px;
   border: none;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-sizing: border-box;
-  height: 34px;          /* SHRUNK from 40px */
-  min-width: 90px;       /* SHRUNK from 100px */
+  height: 42px;
+  min-width: 120px;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  line-height: normal;
-}
-/* DECOR: Play Button Styles */
-.play-again {
-  color: white;
-  background-color: #219150;
 }
 
-.play-again.play-again-state:hover {
-  background-color: #1e8348;
-  transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+.play-again {
+  background-color: #219150;
+  color: white;
 }
 
 .play-again.start {
   background-color: #c0392b;
 }
 
-.play-again.start:hover {
-  background-color: #ad3426;
-  transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
-
-.play-again:active {
-  transform: scale(0.98);
-}
-
-/* DECOR: Dropdown Styles */
 #difficulty {
   background-color: #e7a31b;
   color: white;
   appearance: none;
   text-align: center;
-  text-align-last: center;
-}
-
-#difficulty:hover { 
-  background-color: #da9f29; 
-  transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
-
-#difficulty:focus { 
-  outline: none; 
-  box-shadow: 0 0 5px #f1c40f; 
 }
 
 #difficulty option {
-  background-color: white;
-  color: #333;
-  text-align: left;
-}
-
-.start-row {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-  margin-top: 10px;
-  margin-bottom: 20px;
-  width: 100%;
-  margin-left: 30px;
+  color: black;
 }
 
 /* =====================================
@@ -178,14 +132,14 @@ h5 {
 ===================================== */
 .photo-grid {
   display: grid;
-  gap: 10px;
+  gap: 14px;
   padding: 10px;
   justify-content: center;
   margin: 0 auto;
+
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.4s ease;
-  margin-top: -15px;
 }
 
 body.playing .photo-grid {
@@ -193,121 +147,104 @@ body.playing .photo-grid {
   pointer-events: auto;
 }
 
-.photo-grid.easy   { grid-template-columns: repeat(2, 170px); }
-.photo-grid.medium { grid-template-columns: repeat(4, 170px); }
-.photo-grid.hard   { grid-template-columns: repeat(6, 170px); }
+/* DESKTOP LAYOUT */
+.photo-grid.easy   { grid-template-columns: repeat(2, 180px); }
+.photo-grid.medium { grid-template-columns: repeat(4, 180px); }
+.photo-grid.hard   { grid-template-columns: repeat(6, 180px); }
 
 .card {
-  cursor: pointer;
-  transition: transform 0.3s ease-in-out;
   aspect-ratio: 1 / 1;
-  width: 100%;
+  cursor: pointer;
 }
-
-.card:hover { transform: scale(1.08); }
 
 .card-inner {
   width: 100%;
   height: 100%;
+  position: relative;
   transform-style: preserve-3d;
   transition: transform 0.6s;
-  position: relative;
 }
 
-.card.flipped .card-inner { transform: rotateY(180deg); }
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
 
-.card-front, .card-back {
+.card-front,
+.card-back {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   backface-visibility: hidden;
-  border-radius: 12px;
+  border-radius: 14px;
 }
 
-.card-back { transform: rotateY(180deg); object-fit: contain;}
+.card-back {
+  transform: rotateY(180deg);
+  object-fit: contain;
+}
 
 /* =====================================
-   Home Page Logic
+   Home Screen Layout
 ===================================== */
 body.home {
-  justify-content: center; 
+  justify-content: center;
 }
 
 body.home h1 {
-  font-size: clamp(2.2rem, 10vw, 4rem); 
-  margin-bottom: 30px;
-  width: 100%;
+  font-size: clamp(2.4rem, 9vw, 4.2rem);
 }
 
 body.home h5 {
-  /* This makes it big ONLY on the home page */
-  font-size: clamp(1.5rem, 5vw, 2rem); 
-  line-height: 1.3; 
-  margin-bottom: 7px;
-  width: 80%; /* Prevents text from hitting the very edges */
+  font-size: clamp(1.3rem, 5vw, 2rem);
+  width: 85%;
 }
 
-body.home .subtitle-row {
-  flex-direction: column; /* Stacks volume button and text for a better look on home */
-  gap: 15px;
-}
-
-body.home .play-again, 
+body.home .play-again,
 body.home #difficulty {
-  padding: 15px 30px;
   font-size: 1.3rem;
-  height: 55px;   /* Larger matching height for home screen */
-  min-width: 160px;
+  padding: 16px 34px;
+  height: 56px;
+  min-width: 170px;
 }
 
 /* =====================================
-   Mobile Responsiveness
+   MOBILE RESPONSIVENESS
 ===================================== */
 @media (max-width: 1100px) {
-  /* Allow the screen to scroll as photos wrap onto new rows */
-  body { 
-    height: auto; 
-    min-height: 100vh; 
-    overflow-y: auto; 
+  body {
+    background-attachment: scroll;
   }
 
   .photo-grid {
     width: 100%;
     max-width: 100vw;
-    padding-bottom: 50px;
-    gap: 15px;
-    /* This is the magic: it stays 170px but wraps naturally */
-    grid-template-columns: repeat(auto-fit, 170px) !important;
+
+    /* ✅ NO SQUISH — EVER */
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   }
-  
-  /* Reset the specific difficulty overrides so auto-fit can work */
-  .photo-grid.easy, .photo-grid.medium, .photo-grid.hard {
-    grid-template-columns: repeat(auto-fit, 170px) !important;
+
+  .photo-grid.easy,
+  .photo-grid.medium,
+  .photo-grid.hard {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   }
 }
 
 @media (max-width: 480px) {
-  h1 { font-size: 1.8rem; margin: 15px 0; }
-  
-  /* Remove that 30px offset that might be pushing it off-center on small screens */
-  .start-row { 
-    gap: 10px; 
-    margin-left: 0; 
+  h1 {
+    font-size: 1.6rem;
   }
 
-  .play-again, #difficulty { 
-    padding: 8px 15px; 
-    font-size: 0.95rem; 
-    min-width: 110px;
-    height: 38px;
+  .start-row {
+    flex-direction: column;
+    gap: 12px;
   }
 
-  /* On very small phones, 170px might be too wide for 2 columns. 
-     We can drop it to 150px so you still get two side-by-side. */
-  .photo-grid {
-    grid-template-columns: repeat(auto-fit, 150px) !important;
-    gap: 10px;
+  .play-again,
+  #difficulty {
+    width: 85%;
+    max-width: 260px;
   }
 }
