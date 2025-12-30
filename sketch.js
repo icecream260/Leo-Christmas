@@ -136,7 +136,7 @@ function setupClicks() {
       const back = card.querySelector(".card-back");
 
       if (back.dataset.leo) {
-        chancesDisplay.textContent = "🎄 YAY! You Caught Him! 🎄";
+        chancesDisplay.innerHTML = `🎄 <span class="red-text">YAY!</span> You Caught Him! 🎄`;
         gameOver = true;
       } else {
         chances--;
@@ -187,10 +187,17 @@ homeButton.onclick = () => {
   document.body.classList.remove("playing");
   document.body.classList.add("home");
   photoGrid.innerHTML = "";
+
+  // Reset play button
   playButton.textContent = "Start";
   playButton.classList.add("start");
   playButton.classList.remove("play-again-state");
+
+  // Hide Home button
   homeButton.style.display = "none";
+
+  // RESET CHANCES DISPLAY
+  chancesDisplay.innerHTML = `Chances: <span class="red-text">3</span>`;
 };
 
 // ================================
