@@ -23,14 +23,13 @@
     <div class="subtitle-row">
       <h5>A Christmas tree Leo was accidentally let loose! 
         Catch him before he catches you by clicking on the photos! </h5>
-      
     </div>
 
     <div class="chances">
       Chances: <span class="red-text">3</span>
     </div>
 
-    <!-- START + DIFFICULTY -->
+    <!-- START + DIFFICULTY + HOME BUTTON -->
     <div class="start-row">
       <button class="play-again start">Start</button>
       <select id="difficulty">
@@ -40,7 +39,9 @@
         <option value="hard">Hard</option>
       </select>
       <button class="home-btn" onclick="goHome()"><i class="fa fa-home fa-2x"></i></button>
-      <button class="volume-btn">🔊</button>
+      <div class="volume-row">
+        <button class="volume-btn">🔊</button>
+      </div>
     </div>
   </div>
 
@@ -50,5 +51,4 @@
   <!-- JS -->
   <script src="sketch.js"></script>
 </body>
-
 </html>
