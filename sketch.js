@@ -14,10 +14,11 @@ const playButton = document.querySelector(".play-again");
 const volumeButton = document.querySelector(".volume-btn");
 const difficultySelect = document.getElementById("difficulty");
 const photoGrid = document.querySelector(".photo-grid");
+const homeButton = document.querySelector(".home-btn");
 
-/* ================================
-   PRELOAD IMAGES
-================================ */
+// ================================
+// PRELOAD IMAGES
+// ================================
 function preloadImages() {
   const paths = [
     "photos/img1.jpg",
@@ -42,9 +43,9 @@ function preloadImages() {
 }
 preloadImages();
 
-/* ================================
-   SHUFFLE HELPER
-================================ */
+// ================================
+// SHUFFLE HELPER
+// ================================
 function shuffleArray(array) {
   const copy = [...array];
   for (let i = copy.length - 1; i > 0; i--) {
@@ -54,9 +55,9 @@ function shuffleArray(array) {
   return copy;
 }
 
-/* ================================
-   INIT GAME
-================================ */
+// ================================
+// INIT GAME
+// ================================
 function initGame() {
   const difficulty = difficultySelect.value;
   const cardCount =
@@ -72,13 +73,16 @@ function initGame() {
   photoGrid.innerHTML = "";
   cards = [];
 
-  // ✅ SHUFFLE ALL IMAGES FIRST
+  // Show Home button now that game started
+  homeButton.style.display = "inline-flex";
+
+  // SHUFFLE ALL IMAGES FIRST
   const shuffledImages = shuffleArray(cardImages);
 
-  // ✅ SELECT IMAGES BASED ON DIFFICULTY
+  // SELECT IMAGES BASED ON DIFFICULTY
   const selectedImages = shuffledImages.slice(0, cardCount);
 
-  // ✅ RANDOM LEO POSITION
+  // RANDOM LEO POSITION
   leoIndex = Math.floor(Math.random() * cardCount);
 
   for (let i = 0; i < cardCount; i++) {
@@ -120,9 +124,9 @@ function initGame() {
   }
 }
 
-/* ================================
-   CARD CLICKS
-================================ */
+// ================================
+// CARD CLICKS
+// ================================
 function setupClicks() {
   cards.forEach(card => {
     card.onclick = () => {
@@ -150,9 +154,9 @@ function setupClicks() {
   });
 }
 
-/* ================================
-   BUTTONS
-================================ */
+// ================================
+// BUTTONS
+// ================================
 playButton.onclick = () => {
   document.body.classList.remove("home");
   document.body.classList.add("playing");
@@ -178,9 +182,20 @@ volumeButton.onclick = () => {
   volumeButton.textContent = musicOn ? "🔊" : "🔇";
 };
 
-/* ================================
-   SNOW (p5.js)
-================================ */
+// Home button
+homeButton.onclick = () => {
+  document.body.classList.remove("playing");
+  document.body.classList.add("home");
+  photoGrid.innerHTML = "";
+  playButton.textContent = "Start";
+  playButton.classList.add("start");
+  playButton.classList.remove("play-again-state");
+  homeButton.style.display = "none";
+};
+
+// ================================
+// SNOW (p5.js)
+// ================================
 function setup() {
   let canvas = createCanvas(window.innerWidth, window.innerHeight);
   canvas.style("position", "fixed");
