@@ -136,7 +136,7 @@ function setupClicks() {
       const back = card.querySelector(".card-back");
 
       if (back.dataset.leo) {
-        chancesDisplay.innerHTML = `🎄 <span class="red-text">YAY!</span> You Caught Him! 🎄`;
+        chancesDisplay.innerHTML = `🎄 <span class="red-text">YAY!</span> You Caught Leo! 🎄`;
         gameOver = true;
       } else {
         chances--;
