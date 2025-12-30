@@ -11,7 +11,6 @@ html {
 }
 
 :root {
-  /* Laptop ≈ 170px, desktop grows, mobile shrinks safely */
   --card-size: clamp(150px, 11vw, 230px);
 }
 
@@ -126,7 +125,6 @@ h5 {
   justify-content: center;
 }
 
-/* Play button */
 .play-again {
   color: white;
   background-color: #219150;
@@ -146,9 +144,8 @@ h5 {
   background-color: #ad3426;
 }
 
-/* Home button */
 .home-btn {
-  display: none; /* hidden on home page */
+  display: none;
   color: white;
   background-color: rgb(240, 64, 64);
 }
@@ -163,7 +160,6 @@ body.playing .home-btn:hover {
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-/* Difficulty dropdown */
 #difficulty {
   background-color: #e7a31b;
   color: white;
@@ -201,8 +197,34 @@ body.playing .home-btn:hover {
   gap: 15px;
   margin: 10px 0 20px;
   width: 100%;
-  padding: 0 5%; /* prevent buttons from touching edges */
+  padding: 0 5%;
   flex-wrap: wrap;
+}
+
+/* =====================================
+   VOLUME ROW
+===================================== */
+@media (min-width: 481px) {
+  /* Home page: volume below */
+  body.home .volume-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  /* Gameplay page: all buttons inline */
+  body.playing .start-row {
+    flex-wrap: nowrap; /* prevent line break */
+    justify-content: center;
+    align-items: center;
+  }
+
+  body.playing .volume-row {
+    display: inline-flex;
+    margin-top: 0;
+    width: auto;
+  }
 }
 
 /* =====================================
@@ -227,7 +249,6 @@ body.playing .photo-grid {
   pointer-events: auto;
 }
 
-/* Desktop layouts */
 .photo-grid.easy   { grid-template-columns: repeat(2, var(--card-size)); }
 .photo-grid.medium { grid-template-columns: repeat(4, var(--card-size)); }
 .photo-grid.hard   { grid-template-columns: repeat(6, var(--card-size)); }
@@ -239,9 +260,7 @@ body.playing .photo-grid {
   transition: transform 0.3s ease-in-out;
 }
 
-.card:hover {
-  transform: scale(1.08);
-}
+.card:hover { transform: scale(1.08); }
 
 .card-inner {
   width: 100%;
@@ -251,9 +270,7 @@ body.playing .photo-grid {
   position: relative;
 }
 
-.card.flipped .card-inner {
-  transform: rotateY(180deg);
-}
+.card.flipped .card-inner { transform: rotateY(180deg); }
 
 .card-front,
 .card-back {
@@ -266,32 +283,21 @@ body.playing .photo-grid {
   border-radius: 12px;
 }
 
-.card-back {
-  transform: rotateY(180deg);
-  object-fit: contain;
-}
+.card-back { transform: rotateY(180deg); object-fit: contain; }
 
 /* =====================================
    Home Page
 ===================================== */
-body.home {
-  justify-content: center;
-}
+body.home { justify-content: center; }
 
 body.home h1 {
   font-size: clamp(2.2rem, 10vw, 4rem);
   margin-bottom: 30px;
 }
 
-body.home h5 {
-  font-size: clamp(1.5rem, 5vw, 2rem);
-  width: 80%;
-}
+body.home h5 { font-size: clamp(1.5rem, 5vw, 2rem); width: 80%; }
 
-body.home .subtitle-row {
-  flex-direction: column;
-  gap: 15px;
-}
+body.home .subtitle-row { flex-direction: column; gap: 15px; }
 
 body.home .play-again,
 body.home #difficulty {
@@ -305,33 +311,19 @@ body.home #difficulty {
    Mobile Responsiveness
 ===================================== */
 @media (max-width: 1100px) {
-  body {
-    height: auto;
-    min-height: 100vh;
-    overflow-y: auto;
-  }
+  body { height: auto; min-height: 100vh; overflow-y: auto; }
 
   .photo-grid.easy,
   .photo-grid.medium,
-  .photo-grid.hard {
-    grid-template-columns: repeat(auto-fill, var(--card-size));
-  }
+  .photo-grid.hard { grid-template-columns: repeat(auto-fill, var(--card-size)); }
 
-  .photo-grid {
-    width: 95%;
-    padding: 0 2.5%;
-  }
+  .photo-grid { width: 95%; padding: 0 2.5%; }
 }
 
 @media (max-width: 480px) {
-  h1 {
-    font-size: 1.8rem;
-    margin: 15px 0;
-  }
+  h1 { font-size: 1.8rem; margin: 15px 0; }
 
-  .start-row {
-    gap: 10px;
-  }
+  .start-row { gap: 10px; }
 
   .play-again,
   #difficulty,
@@ -343,7 +335,5 @@ body.home #difficulty {
     height: clamp(34px, 5vw, 55px);
   }
 
-  .subtitle-row {
-    padding: 0 5%; /* prevent h5 text from touching edges */
-  }
+  .subtitle-row { padding: 0 5%; }
 }
