@@ -13,7 +13,7 @@ html {
 body { 
   margin: 0;
   padding: 0;
-  padding-bottom: calc(40px + env(safe-area-inset-bottom)); /* bottom gap */
+  padding-bottom: calc(20px + env(safe-area-inset-bottom)); /* small bottom gap */
   height: 100vh; 
   width: 100%;
   overflow: hidden; 
@@ -62,13 +62,20 @@ h5 {
 }
 
 .volume-btn {
-  background: none;
+  background-color: whitesmoke;
+  padding: 0 15px;
+  border-radius: 6px;
   border: none;
+  height: 34px;
+  min-width: 90px;
   font-size: 1.5rem;
   cursor: pointer;
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
+  line-height: normal;
 }
+
 
 .chances {
   font-size: 1rem;
@@ -94,7 +101,8 @@ h5 {
    Buttons & Difficulty Dropdown
 ===================================== */
 .play-again,
-#difficulty {
+#difficulty,
+.home-btn {
   font-family: 'Englebert';
   font-size: 0.9rem;
   padding: 0 15px;
@@ -130,6 +138,24 @@ h5 {
   background-color: #ad3426;
 }
 
+/* Home button (only visible on game page) */
+.home-btn {
+  display: none; /* hidden on home page */
+  color: white;
+  background-color: rgb(240, 64, 64);
+  transition: all 0.3s ease;
+}
+
+body.playing .home-btn {
+  display: inline-flex;
+}
+
+body.playing .home-btn:hover {
+  background-color: rgb(184, 50, 50); /* darker red */
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
 /* Difficulty dropdown */
 #difficulty {
   background-color: #e7a31b;
@@ -150,7 +176,7 @@ h5 {
   box-shadow: 0 0 5px #f1c40f;
 }
 
-/* 🔥 Difficulty option decor (NOT omitted) */
+/* 🔥 Difficulty option decor */
 #difficulty option {
   background-color: white;
   color: #333;
@@ -169,7 +195,7 @@ h5 {
   gap: 15px;
   margin: 10px 0 20px;
   width: 100%;
-  margin-left: 30px;
+  text-align: center;
 }
 
 /* =====================================
@@ -300,7 +326,8 @@ body.home #difficulty {
   }
 
   .play-again,
-  #difficulty {
+  #difficulty,
+  .home-btn {
     padding: 8px 15px;
     font-size: 0.95rem;
     min-width: 110px;
