@@ -12,11 +12,10 @@ html {
 
 body { 
   margin: 0;
-  padding: 0;
-  padding-bottom: calc(20px + env(safe-area-inset-bottom)); /* small bottom gap */
-  height: 100vh; 
+  padding: env(safe-area-inset-top) 5% calc(20px + env(safe-area-inset-bottom)) 5%;
+  min-height: 100vh;
   width: 100%;
-  overflow: hidden; 
+  overflow-y: auto; /* allow scroll on small screens */
   display: flex;
   flex-direction: column;
   align-items: center; 
@@ -38,7 +37,7 @@ body {
    UI Elements
 ===================================== */
 h1 {
-  font-size: 1.8rem;
+  font-size: clamp(1.8rem, 6vw, 3.5rem);
   margin: 20px 0;
   width: 100%;
 }
@@ -48,8 +47,7 @@ h1 {
   justify-content: center;
   align-items: center;
   gap: 4px;
-  margin-top: -15px;
-  margin-bottom: 6px;
+  margin: -15px 0 6px;
   width: 100%;
   flex-wrap: wrap;
 }
@@ -57,25 +55,26 @@ h1 {
 h5 {
   margin: 0;
   font-weight: lighter;
-  font-size: 0.9rem;
-  white-space: normal;
+  font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+  width: 90%;
+  word-wrap: break-word;
+  line-height: 1.3;
 }
 
 .volume-btn {
   background-color: whitesmoke;
-  padding: 0 15px;
+  padding: clamp(6px, 1.5vw, 15px) clamp(10px, 2vw, 20px);
   border-radius: 6px;
   border: none;
-  height: 34px;
-  min-width: 90px;
-  font-size: 1.5rem;
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   line-height: normal;
+  min-width: clamp(80px, 15vw, 160px);
+  height: clamp(34px, 5vw, 55px);
 }
-
 
 .chances {
   font-size: 1rem;
@@ -104,14 +103,14 @@ h5 {
 #difficulty,
 .home-btn {
   font-family: 'Englebert';
-  font-size: 0.9rem;
-  padding: 0 15px;
+  font-size: clamp(0.9rem, 2vw, 1.5rem);
+  padding: clamp(6px, 1.5vw, 15px) clamp(10px, 2vw, 20px);
   border-radius: 6px;
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
-  height: 34px;
-  min-width: 90px;
+  min-width: clamp(80px, 15vw, 160px);
+  height: clamp(34px, 5vw, 55px);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -143,7 +142,6 @@ h5 {
   display: none; /* hidden on home page */
   color: white;
   background-color: rgb(240, 64, 64);
-  transition: all 0.3s ease;
 }
 
 body.playing .home-btn {
@@ -176,7 +174,6 @@ body.playing .home-btn:hover {
   box-shadow: 0 0 5px #f1c40f;
 }
 
-/* 🔥 Difficulty option decor */
 #difficulty option {
   background-color: white;
   color: #333;
@@ -190,12 +187,15 @@ body.playing .home-btn:hover {
 ===================================== */
 .start-row {
   display: flex;
+  flex-wrap: wrap; /* allow buttons to stack */
   justify-content: center;
   align-items: center;
-  gap: 15px;
-  margin: 10px 0 20px;
+  gap: clamp(8px, 2vw, 20px);
   width: 100%;
   text-align: center;
+  padding: 0 5%; /* prevent edges cut-off */
+  box-sizing: border-box;
+  margin: 10px 0 20px;
 }
 
 /* =====================================
@@ -276,7 +276,8 @@ body.home h1 {
 
 body.home h5 {
   font-size: clamp(1.5rem, 5vw, 2rem);
-  width: 80%;
+  width: 90%;
+  word-wrap: break-word;
 }
 
 body.home .subtitle-row {
@@ -287,9 +288,9 @@ body.home .subtitle-row {
 body.home .play-again,
 body.home #difficulty {
   padding: 15px 30px;
-  font-size: 1.3rem;
-  height: 55px;
-  min-width: 160px;
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  height: clamp(45px, 5vw, 55px);
+  min-width: clamp(140px, 30vw, 160px);
 }
 
 /* =====================================
@@ -302,7 +303,6 @@ body.home #difficulty {
     overflow-y: auto;
   }
 
-  /* Wrap cards instead of shrinking */
   .photo-grid.easy,
   .photo-grid.medium,
   .photo-grid.hard {
@@ -317,22 +317,26 @@ body.home #difficulty {
 
 @media (max-width: 480px) {
   h1 {
-    font-size: 1.8rem;
+    font-size: clamp(1.5rem, 5vw, 2rem);
     margin: 15px 0;
   }
 
   .start-row {
-    gap: 10px;
+    gap: clamp(6px, 2vw, 12px);
   }
 
-.play-again,
-#difficulty,
-.home-btn,
-.volume-btn {
-  font-size: clamp(0.9rem, 2vw, 1.5rem);
-  padding: clamp(6px, 1.5vw, 15px) clamp(10px, 2vw, 20px);
-  min-width: clamp(80px, 15vw, 160px);
-  height: clamp(34px, 5vw, 55px);
-}
+  .play-again,
+  #difficulty,
+  .home-btn,
+  .volume-btn {
+    font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+    padding: clamp(6px, 1.5vw, 12px) clamp(8px, 3vw, 20px);
+    min-width: clamp(70px, 30%, 150px);
+    height: clamp(34px, 6vw, 50px);
+  }
 
+  h5 {
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+    width: 95%;
+  }
 }
